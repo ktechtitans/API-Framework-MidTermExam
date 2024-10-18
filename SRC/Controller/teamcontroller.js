@@ -19,4 +19,12 @@ const getAllTeams = async (req, res) => {
     }
   };
 
+  // Function to get a team by its ID
+const getTeamById = async (req, res) => {
+    const teamID = req.params.id; // Extracting the team ID from the request parameters
+    try {
+      const team = await Team.findOne({ teamId: teamID }); // Fetching the team by ID
+    }
+  };
+
 
