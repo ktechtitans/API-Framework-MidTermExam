@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Teams API</title>
+</head>
+
+<body>
+  <h1>Sports Teams API</h1>
+  <p>Use the buttons below to fetch data from the sports teams API:</p>
+
+  <button id="getAllTeams">Get All Teams</button>
+  <button id="getTeamById">Get Team By ID</button>
+  <button id="getTeamsByCity">Get Teams By City</button>
+
+  <h2>Results:</h2>
+  <pre id="results"></pre>
+
+  <script>
+    const resultsElement = document.getElementById("results");
+
+    // Function to fetch all teams
+    document.getElementById("getAllTeams").addEventListener("click", async () => {
+      try {
+        const response = await fetch("http://localhost:3000/teams");
+        const data = await response.json();
+        resultsElement.textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        resultsElement.textContent = "Error fetching all teams: " + error;
+      }
+    });
+
+    // Function to fetch a team by ID
+    document.getElementById("getTeamById").addEventListener("click", async () => {
+      const teamId = prompt("Enter Team ID:");
+      if (teamId) {
+        try {
+          const response = await fetch(`http://localhost:3000/teams/${teamId}`);
+          const data = await response.json();
+          resultsElement.textContent = JSON.stringify(data, null, 2);
+        } catch (error) {
+          resultsElement.textContent = "Error fetching team by ID: " + error;
+        }
+      }
+    });
+
+    // Function to fetch teams by city
+    document.getElementById("getTeamsByCity").addEventListener("click", async () => {
+      const city = prompt("Enter City Name:");
+      if (city) {
+        try {
+          const response = await fetch(`http://localhost:3000/teams/city/${city}`);
+          const data = await response.json();
+          resultsElement.textContent = JSON.stringify(data, null, 2);
+        } catch (error) {
+          resultsElement.textContent = "Error fetching teams by city: " + error;
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
