@@ -12,3 +12,9 @@ const TeamSchema = new Schema({
     coach: { type: String, required: true },
   },
 });
+
+// Create the Team model using the defined schema
+const Team = mongoose.model("Team", TeamSchema);
+
+// Export the Team model
+module.exports = Team;
