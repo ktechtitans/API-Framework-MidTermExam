@@ -13,3 +13,6 @@ router.get("/teams/:id", getTeamById);
 
 // Route to get teams based on the city
 router.get("/teams/city/:city", getTeamsByCity);
+
+// Export the router for use in the main server file
+module.exports = router;
