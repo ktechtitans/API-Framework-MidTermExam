@@ -2,6 +2,9 @@
 const express = require("express");
 const router = express.Router();
 
+// Import functions from the teamcontroller
+const { getAllTeams, getTeamById, getTeamsByCity } = require("../Controller/teamcontroller");
+
 // Route to get all teams
 router.get("/teams", getAllTeams);
 
