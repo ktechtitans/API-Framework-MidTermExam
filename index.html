@@ -24,11 +24,14 @@
     // Function to fetch all teams
     document.getElementById("getAllTeams").addEventListener("click", async () => {
       try {
-        const response = await fetch("http://localhost:3000/teams");
+        const response = await fetch("http://localhost:3001/teams"); // Ensure this matches your server port
+        if (!response.ok) { // Check if the response is ok
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         resultsElement.textContent = JSON.stringify(data, null, 2);
       } catch (error) {
-        resultsElement.textContent = "Error fetching all teams: " + error;
+        resultsElement.textContent = "Error fetching all teams: " + error.message;
       }
     });
 
@@ -37,11 +40,14 @@
       const teamId = prompt("Enter Team ID:");
       if (teamId) {
         try {
-          const response = await fetch(`http://localhost:3000/teams/${teamId}`);
+          const response = await fetch(`http://localhost:3001/teams/${teamId}`); // Ensure the port matches
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
           const data = await response.json();
           resultsElement.textContent = JSON.stringify(data, null, 2);
         } catch (error) {
-          resultsElement.textContent = "Error fetching team by ID: " + error;
+          resultsElement.textContent = "Error fetching team by ID: " + error.message;
         }
       }
     });
@@ -51,11 +57,14 @@
       const city = prompt("Enter City Name:");
       if (city) {
         try {
-          const response = await fetch(`http://localhost:3000/teams/city/${city}`);
+          const response = await fetch(`http://localhost:3001/teams/city/${city}`); // Ensure the port matches
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
           const data = await response.json();
           resultsElement.textContent = JSON.stringify(data, null, 2);
         } catch (error) {
-          resultsElement.textContent = "Error fetching teams by city: " + error;
+          resultsElement.textContent = "Error fetching teams by city: " + error.message;
         }
       }
     });

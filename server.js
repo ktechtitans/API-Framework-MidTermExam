@@ -25,8 +25,8 @@ const teamData = JSON.parse(fs.readFileSync("./teams.json", "utf-8")); // Load t
 
 // Define Team model
 const Team = mongoose.model('Team', new mongoose.Schema({
+  teamName: { type: String, required: true },
   teamId: { type: String, required: true },
-  name: { type: String, required: true },
   city: { type: String, required: true },
   // Add other fields as necessary
 }));
