@@ -6,7 +6,7 @@ const path = require("path");
 // Function to get all teams
 const getAllTeams = async (req, res) => {
     try {
-      const teams = await Team.find(); // Fetching all teams from the database
+      const teams = await Team.find(); // Fetch all teams from the database
   
       if (teams.length > 0) {
         res.status(200).json(teams); // Respond with the list of teams
@@ -21,9 +21,9 @@ const getAllTeams = async (req, res) => {
 
   // Function to get a team by its ID
 const getTeamById = async (req, res) => {
-    const teamID = req.params.id; // Extracting the team ID from the request parameters
+    const teamID = req.params.id; // Extract the team ID from the request parameters
     try {
-      const team = await Team.findOne({ teamId: teamID }); // Fetching the team by ID
+      const team = await Team.findOne({ teamId: teamID }); // Fetch the team by ID
       if (!team) {
         return res.status(404).send("Team not found with the given ID"); // Handle case where team is not found
       } else {
@@ -37,9 +37,9 @@ const getTeamById = async (req, res) => {
 
   // Function to get teams by city
 const getTeamsByCity = async (req, res) => {
-    const cityRegex = new RegExp(req.params.city, "i"); // Creating a case-insensitive regex for the city
+    const cityRegex = new RegExp(req.params.city, "i"); // Create a case-insensitive regex for the city
     try {
-      const teams = await Team.find({ city: cityRegex }); // Fetching teams matching the city regex
+      const teams = await Team.find({ city: cityRegex }); // Fetch teams matching the city regex
       if (teams.length > 0) {
         res.status(200).json(teams); // Respond with the list of matching teams
       } else {
@@ -50,5 +50,8 @@ const getTeamsByCity = async (req, res) => {
       res.status(500).send("Failed to fetch teams by city"); // Handle server error
     }
   };
+
+  // Export the functions
+module.exports = { getAllTeams, getTeamById, getTeamsByCity };
 
 
