@@ -16,5 +16,5 @@ const TeamSchema = new Schema({
 // Create the Team model using the defined schema
 const Team = mongoose.model("Team", TeamSchema);
 
-// Export the Team model
+// Export the Team model for use in other parts of the application
 module.exports = Team;

@@ -51,7 +51,7 @@ const getTeamsByCity = async (req, res) => {
     }
   };
 
-  // Export the functions
+  // Export the functions for use in routes
 module.exports = { getAllTeams, getTeamById, getTeamsByCity };
 
 
