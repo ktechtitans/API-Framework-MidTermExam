@@ -17,15 +17,14 @@ mongoose
   .catch((err) => console.error(err));
 
 // Middleware
-app.use(cors()); // Enable CORS for all requests
-app.use(express.json()); // Parse incoming JSON requests
+app.use(cors()); 
+app.use(express.json());
 
 // Load team data from the JSON file
-const teamData = JSON.parse(fs.readFileSync("./teams.json", "utf-8")); // Load teams.json
+const teamData = JSON.parse(fs.readFileSync("./teams.json", "utf-8")); 
 
 // Define Team model
 const Team = mongoose.model('Team', new mongoose.Schema({
-  teamName: { type: String, required: true },
   teamId: { type: String, required: true },
   city: { type: String, required: true },
 }));
@@ -51,8 +50,8 @@ const importTeams = async (req, res) => {
 // API to get all teams
 app.get("/teams", async (req, res) => {
   try {
-    const teams = await Team.find(); // Retrieve all teams
-    res.json(teams); // Return teams as JSON
+    const teams = await Team.find(); 
+    res.json(teams); 
   } catch (error) {
     console.error("Error fetching teams:", error);
     res.status(500).send("Error fetching teams");
@@ -60,14 +59,14 @@ app.get("/teams", async (req, res) => {
 });
 
 // API to get a team by ID
-app.get("/team/:teamId", async (req, res) => { // Corrected path
-  const teamId = req.params.teamId; // Corrected retrieval of teamId
+app.get("/teamId/:teamId", async (req, res) => { 
+  const teamId = req.params.teamId; 
   try {
-    const team = await Team.findOne({ teamId: teamId }); // Find team by teamId
+    const team = await Team.findOne({ teamId: teamId }); 
     if (team) {
-      res.json(team); // Return the team if found
+      res.json(team); 
     } else {
-      res.status(404).send("Team not found"); // Return 404 if not found
+      res.status(404).send("Team not found");
     }
   } catch (error) {
     console.error("Error fetching team:", error);
@@ -79,8 +78,8 @@ app.get("/team/:teamId", async (req, res) => { // Corrected path
 app.get("/teams/city/:city", async (req, res) => {
   const city = req.params.city;
   try {
-    const teams = await Team.find({ city: city }); // Find teams by city
-    res.json(teams); // Return teams as JSON
+    const teams = await Team.find({ city: city });
+    res.json(teams); 
   } catch (error) {
     console.error("Error fetching teams by city:", error);
     res.status(500).send("Error fetching teams by city");
@@ -88,7 +87,7 @@ app.get("/teams/city/:city", async (req, res) => {
 });
 
 // Endpoint to import team data
-app.get("/upload-teams", importTeams); // Import teams data
+app.get("/upload-teams", importTeams); 
 
 // Start the server
 const port = process.env.PORT || 3001;

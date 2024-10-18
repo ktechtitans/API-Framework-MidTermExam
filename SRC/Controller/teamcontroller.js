@@ -21,27 +21,27 @@ const getAllTeams = async (req, res) => {
 
  // Function to get a team by its ID
 const getTeamById = async (req, res) => {
-  const teamID = req.params.teamId; // Correctly extract the team ID
+  const teamID = req.params.teamId; 
   try {
-      const team = await Team.findOne({ teamId: teamID }); // Fetch the team by ID
+      const team = await Team.findOne({ teamId: teamID });
       if (!team) {
-          return res.status(404).send("Team not found with the given ID"); // Handle case where team is not found
+          return res.status(404).send("Team not found with the given ID"); 
       } else {
-          res.status(200).json(team); // Respond with the found team
+          res.status(200).json(team); 
       }
   } catch (error) {
       console.error(error);
-      res.status(500).send("Error retrieving the team"); // Handle server error
+      res.status(500).send("Error retrieving the team"); 
   }
 };
 
   // Function to get teams by city
 const getTeamsByCity = async (req, res) => {
-    const cityRegex = new RegExp(req.params.city, "i"); // Create a case-insensitive regex for the city
+    const cityRegex = new RegExp(req.params.city, "i"); 
     try {
-      const teams = await Team.find({ city: cityRegex }); // Fetch teams matching the city regex
+      const teams = await Team.find({ city: cityRegex }); 
       if (teams.length > 0) {
-        res.status(200).json(teams); // Respond with the list of matching teams
+        res.status(200).json(teams);
       } else {
         res.status(404).json({ message: "No teams found in the given city" }); // Handle case where no teams are found
       }

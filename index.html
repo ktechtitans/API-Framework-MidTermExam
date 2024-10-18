@@ -24,8 +24,8 @@
     // Function to fetch all teams
     document.getElementById("getAllTeams").addEventListener("click", async () => {
       try {
-        const response = await fetch("http://localhost:3001/teams"); // Ensure this matches your server port
-        if (!response.ok) { // Check if the response is ok
+        const response = await fetch("http://localhost:3001/teams"); 
+        if (!response.ok) { 
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
@@ -40,7 +40,7 @@
       const teamId = prompt("Enter Team ID:");
       if (teamId) {
         try {
-            const response = await fetch(`http://localhost:3001/team/${teamId}`); 
+            const response = await fetch(`http://localhost:3001/teamId/${teamId}`); 
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
@@ -57,7 +57,7 @@
       const city = prompt("Enter City Name:");
       if (city) {
         try {
-          const response = await fetch(`http://localhost:3001/teams/city/${city}`); // Ensure the port matches
+          const response = await fetch(`http://localhost:3001/teams/city/${city}`); 
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
