@@ -3,4 +3,20 @@ const Team = require("../Model/teammodel");
 const fs = require("fs");
 const path = require("path");
 
+// Function to get all teams
+const getAllTeams = async (req, res) => {
+    try {
+      const teams = await Team.find(); // Fetching all teams from the database
+  
+      if (teams.length > 0) {
+        res.status(200).json(teams); // Respond with the list of teams
+      } else {
+        res.status(404).json({ error: "No teams found" }); // Handle case where no teams are found
+      }
+    } catch (error) {
+      console.log("Error:", error);
+      res.status(500).json({ message: "Error occurred while getting teams", error });
+    }
+  };
+
 
