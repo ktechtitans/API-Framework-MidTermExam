@@ -21,53 +21,7 @@
   <script>
     const resultsElement = document.getElementById("results");
 
-    // Function to fetch all teams
-    document.getElementById("getAllTeams").addEventListener("click", async () => {
-      try {
-        const response = await fetch("http://localhost:3001/teams"); 
-        if (!response.ok) { 
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        resultsElement.textContent = JSON.stringify(data, null, 2);
-      } catch (error) {
-        resultsElement.textContent = "Error fetching all teams: " + error.message;
-      }
-    });
-
-    // Function to fetch a team by ID
-    document.getElementById("getTeamById").addEventListener("click", async () => {
-      const teamId = prompt("Enter Team ID:");
-      if (teamId) {
-        try {
-            const response = await fetch(`http://localhost:3001/teamId/${teamId}`); 
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          const data = await response.json();
-          resultsElement.textContent = JSON.stringify(data, null, 2);
-        } catch (error) {
-          resultsElement.textContent = "Error fetching team by ID: " + error.message;
-        }
-      }
-    });
-
-    // Function to fetch teams by city
-    document.getElementById("getTeamsByCity").addEventListener("click", async () => {
-      const city = prompt("Enter City Name:");
-      if (city) {
-        try {
-          const response = await fetch(`http://localhost:3001/teams/city/${city}`); 
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          const data = await response.json();
-          resultsElement.textContent = JSON.stringify(data, null, 2);
-        } catch (error) {
-          resultsElement.textContent = "Error fetching teams by city: " + error.message;
-        }
-      }
-    });
+    
   </script>
 
 </body>
