@@ -9,7 +9,7 @@ const { getAllTeams, getTeamById, getTeamsByCity } = require("../Controller/team
 router.get("/teams", getAllTeams);
 
 // Route to get a specific team by its ID
-router.get("/teams/:id", getTeamById);
+router.get("/team/:teamId", getTeamById);  // Updated route to be consistent with frontend
 
 // Route to get teams based on the city
 router.get("/teams/city/:city", getTeamsByCity);

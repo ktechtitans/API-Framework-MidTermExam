@@ -40,7 +40,7 @@
       const teamId = prompt("Enter Team ID:");
       if (teamId) {
         try {
-          const response = await fetch(`http://localhost:3001/teams/${teamId}`); // Ensure the port matches
+            const response = await fetch(`http://localhost:3001/team/${teamId}`); 
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }

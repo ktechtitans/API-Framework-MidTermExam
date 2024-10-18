@@ -28,7 +28,6 @@ const Team = mongoose.model('Team', new mongoose.Schema({
   teamName: { type: String, required: true },
   teamId: { type: String, required: true },
   city: { type: String, required: true },
-  // Add other fields as necessary
 }));
 
 // Import Team Data into MongoDB
@@ -61,8 +60,8 @@ app.get("/teams", async (req, res) => {
 });
 
 // API to get a team by ID
-app.get("/teams/:id", async (req, res) => {
-  const teamId = req.params.id;
+app.get("/team/:teamId", async (req, res) => { // Corrected path
+  const teamId = req.params.teamId; // Corrected retrieval of teamId
   try {
     const team = await Team.findOne({ teamId: teamId }); // Find team by teamId
     if (team) {

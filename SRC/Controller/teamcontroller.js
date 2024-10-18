@@ -19,21 +19,21 @@ const getAllTeams = async (req, res) => {
     }
   };
 
-  // Function to get a team by its ID
+ // Function to get a team by its ID
 const getTeamById = async (req, res) => {
-    const teamID = req.params.id; // Extract the team ID from the request parameters
-    try {
+  const teamID = req.params.teamId; // Correctly extract the team ID
+  try {
       const team = await Team.findOne({ teamId: teamID }); // Fetch the team by ID
       if (!team) {
-        return res.status(404).send("Team not found with the given ID"); // Handle case where team is not found
+          return res.status(404).send("Team not found with the given ID"); // Handle case where team is not found
       } else {
-        res.status(200).json(team); // Respond with the found team
+          res.status(200).json(team); // Respond with the found team
       }
-    } catch (error) {
+  } catch (error) {
       console.error(error);
       res.status(500).send("Error retrieving the team"); // Handle server error
-    }
-  };
+  }
+};
 
   // Function to get teams by city
 const getTeamsByCity = async (req, res) => {
@@ -51,7 +51,7 @@ const getTeamsByCity = async (req, res) => {
     }
   };
 
-  // Export the functions for use in routes
+  // Export the functions to connect with router
 module.exports = { getAllTeams, getTeamById, getTeamsByCity };
 
 
