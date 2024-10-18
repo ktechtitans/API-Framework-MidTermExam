@@ -1,6 +1,8 @@
 // Import libraries and modules
 const express = require('express');
 const mongoose = require('mongoose');
+const fs = require("fs");
+const cors = require("cors");
 
 //Initialize the express app
 const app = express();
@@ -16,7 +18,7 @@ mongoose
   })
   .then(() => console.log("You are connected to MongoDB"))
   .catch((err) => console.error(err));
-  
+
 // Start the server
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
