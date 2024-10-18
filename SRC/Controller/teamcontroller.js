@@ -24,6 +24,14 @@ const getTeamById = async (req, res) => {
     const teamID = req.params.id; // Extracting the team ID from the request parameters
     try {
       const team = await Team.findOne({ teamId: teamID }); // Fetching the team by ID
+      if (!team) {
+        return res.status(404).send("Team not found with the given ID"); // Handle case where team is not found
+      } else {
+        res.status(200).json(team); // Respond with the found team
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Error retrieving the team"); // Handle server error
     }
   };
 
