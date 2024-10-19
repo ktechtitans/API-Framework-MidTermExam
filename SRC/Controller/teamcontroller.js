@@ -1,3 +1,9 @@
+/**
+ * File: controller.js
+ * Student Name: Kanchandeep Kaur
+ * Student ID: 200603165
+ * Date: 18-10-2024
+ */
 // Import the Team model
 const Team = require("../Model/teammodel"); 
 const fs = require("fs");

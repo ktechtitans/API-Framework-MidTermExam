@@ -1,3 +1,9 @@
+/**
+ * File: teammodel.js
+ * Student Name: Kanchandeep Kaur
+ * Student ID: 200603165
+ * Date: 18-10-2024
+ */
 // Import Mongoose library
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;

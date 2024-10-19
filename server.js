@@ -1,3 +1,9 @@
+/**
+ * File: server.js
+ * Student Name: Kanchandeep Kaur
+ * Student ID: 200603165
+ * Date: 18-10-2024
+ */
 // Import libraries and modules
 const express = require('express');
 const mongoose = require('mongoose');
